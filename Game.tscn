@@ -1,24 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Rooms.gd" type="Script" id=1]
+[ext_resource path="res://Controller.gd" type="Script" id=1]
 [ext_resource path="res://assets/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/rooms/Room 01.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Overlay.gd" type="Script" id=4]
+[ext_resource path="res://assets/templates/RoomTerminal.tscn" type="PackedScene" id=5]
 
-[node name="Game" type="Node2D"]
-
-[node name="Room" type="Node2D" parent="."]
+[node name="Controller" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Room 01" parent="Room" instance=ExtResource( 3 )]
+[node name="Room" type="Node2D" parent="."]
 
-[node name="Player" parent="Room" instance=ExtResource( 2 )]
+[node name="Room 11" parent="Room" instance=ExtResource( 3 )]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 312, 49 )
 
-[node name="Overlay" type="Node2D" parent="Room"]
+[node name="Overlay" type="Node2D" parent="."]
+visible = false
 script = ExtResource( 4 )
 
-[node name="movex" type="Label" parent="Room/Overlay"]
+[node name="movex" type="Label" parent="Overlay"]
 margin_left = 8.0
 margin_right = 54.0
 margin_bottom = 14.0
@@ -27,7 +29,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="movey" type="Label" parent="Room/Overlay"]
+[node name="movey" type="Label" parent="Overlay"]
 margin_left = 8.0
 margin_top = 16.0
 margin_right = 54.0
@@ -37,7 +39,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InFrontOf" type="Label" parent="Room/Overlay"]
+[node name="InFrontOf" type="Label" parent="Overlay"]
 margin_left = 8.0
 margin_top = 32.0
 margin_right = 54.0
@@ -47,7 +49,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pState" type="Label" parent="Room/Overlay"]
+[node name="pState" type="Label" parent="Overlay"]
 margin_left = 8.0
 margin_top = 56.0
 margin_right = 54.0
@@ -56,3 +58,9 @@ text = "pState:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RoomTerminal" parent="." instance=ExtResource( 5 )]
+[connection signal="terminal_access" from="." to="." method="_on_Controller_terminal_access"]
+[connection signal="terminal_disablerobots" from="." to="." method="_on_Controller_terminal_disablerobots"]
+[connection signal="terminal_logoff" from="." to="." method="_on_Controller_terminal_logoff"]
+[connection signal="terminal_resetlifts" from="." to="." method="_on_Controller_terminal_resetlifts"]

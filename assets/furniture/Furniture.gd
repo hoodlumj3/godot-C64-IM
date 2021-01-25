@@ -1,6 +1,7 @@
 extends Area2D
 
 export var FunitureName : String = "Blank"  
+export var FunitureSearchTime : float = 5.0
 
 var playerconnected : bool = false
 var timeval = 5
@@ -39,8 +40,10 @@ func _ready():
 	timeval = timervalues[FunitureName]
 	
 	collision_layer = 4 #// im on furniture layer
-	collision_mask = 0 # notify collide with nobody (raycast2d will handle its own)
+	collision_mask = 0 # notify collide with nobody (players raycast2d will handle this bit)
+	
 	print(name, " tv:", timeval)
+
 	pass # Replace with function body.
 
 
@@ -49,6 +52,8 @@ func _process(delta):
 	
 	pass
 
+
+#// 2021-01-25 ME : just wondering if i even need these anymore (because player -> raycast2d)
 
 func _on_Furniture_area_entered(area):
 	print("Furniture => ", area.name, " entered ", self.name)

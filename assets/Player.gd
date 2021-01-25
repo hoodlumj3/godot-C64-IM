@@ -49,6 +49,9 @@ func _input(event):
 
 func _process(delta):
 
+	if ( Global.thisGameState != Global.gamestate.room and Global.thisGameState != Global.gamestate.corridor  ):
+		return
+
 	if Global.gameProcessing == false: 
 		return
 
@@ -303,15 +306,24 @@ func _on_Player_searching_start():
 	
 	
 	print(playerinfrontoffurniture.name, ":", playerinfrontoffurniture.FunitureName)
-	
-	if ( playerinfrontoffurniture.FunitureName == "Computer" ):
+
+	$Flip/Sprite.frame = 128
+
+	if ( playerinfrontoffurniture.FunitureName == "Terminal" ):
+		#// robot sound off
+		#// hide room
+		#// show terminal 
+		#// 	controls over to terminal
+		
+		find_parent("Controller").emit_signal("terminal_access")
+		
 		return
-	
+
 	searchtimeval = playerinfrontoffurniture.timeval
 	_searchtimeval = searchtimeval
 	lastsearchtimeval = -1
 
-	$Flip/Sprite.frame = 128
+
 	#$Flip/AnimatedSprite.play("search")
 	$Searching/Bubble._timeval = searchtimeval
 	$Searching/Bubble.timeval = searchtimeval
@@ -332,7 +344,7 @@ func _on_Player_searching():
 
 
 func _on_Player_searching_stop():
-	if ( playerinfrontoffurniture.FunitureName == "Computer" ):
+	if ( playerinfrontoffurniture.FunitureName == "Terminal" ):
 		return
 	
 	#print("Signal recieved _on_Player_Searching_Stop")	

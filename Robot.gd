@@ -11,7 +11,7 @@ export var move_speed = 24
 enum state { running=0, idle=1, direction=2, falling=3, zapping=4, toofar=5, cycle=6, check=7, nothing=8} 
 
 
-var robotCheckName = "Robotx"
+var robotCheckName = "Robot2"
 
 
 enum primary_mode { 
@@ -58,7 +58,9 @@ func _ready():
 	enter_state(state.falling)
 	
 func _process(delta):
-	#print('_physics_process')
+
+	if ( Global.thisGameState != Global.gamestate.room ):
+		return
 	
 	if Global.gameProcessing == false:
 		return

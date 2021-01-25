@@ -16,6 +16,7 @@ __meta__ = {
 "_edit_group_": true
 }
 FunitureName = "Piano"
+FunitureSearchTime = 1.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = SubResource( 1 )

@@ -3,24 +3,27 @@
 [ext_resource path="res://tiles.png" type="Texture" id=1]
 [ext_resource path="res://assets/furniture/Furniture.gd" type="Script" id=2]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 12 )
+
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
-region = Rect2( 345, 95, 16, 24 )
+region = Rect2( 327, 59, 24, 24 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 12 )
-
-[node name="Terminal" type="Area2D"]
+[node name="Computer" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 FunitureName = "Terminal"
-
-[node name="Sprite" type="Sprite" parent="."]
-texture = SubResource( 1 )
-centered = false
+FunitureSearchTime = -1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 8, 12 )
-shape = SubResource( 2 )
+position = Vector2( 12, 12 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = SubResource( 2 )
+centered = false

@@ -16,6 +16,7 @@ __meta__ = {
 "_edit_group_": true
 }
 FunitureName = "MainFrame"
+FunitureSearchTime = 2.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = SubResource( 1 )

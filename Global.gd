@@ -1,5 +1,10 @@
 extends Node
 
+
+enum gamestate {greeting, corridor, room, roomtalk, terminal, terminalwait, finale}
+
+var thisGameState = gamestate.room
+
 var gameProcessing = false
 var playerControl = false
 

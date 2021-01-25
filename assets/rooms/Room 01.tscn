@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/furniture/Computer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/furniture/Terminal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/furniture/Bookcase.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/robots/Robot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/furniture/Desk.tscn" type="PackedScene" id=5]
@@ -14,7 +14,7 @@ shader_param/flash0 = 2
 shader_param/color1 = 7
 shader_param/color2 = 8
 
-[node name="Room 01" type="TileMap"]
+[node name="Room 11" type="TileMap"]
 tile_set = ExtResource( 7 )
 cell_size = Vector2( 8, 8 )
 format = 1
@@ -28,20 +28,20 @@ position = Vector2( 240, 168 )
 [node name="Desk2" parent="Furniture" instance=ExtResource( 5 )]
 position = Vector2( 110, 24 )
 
-[node name="Computer" parent="Furniture" instance=ExtResource( 2 )]
+[node name="Terminal" parent="Furniture" instance=ExtResource( 2 )]
 position = Vector2( 40, 168 )
 
-[node name="Computer2" parent="Furniture" instance=ExtResource( 2 )]
+[node name="Terminal2" parent="Furniture" instance=ExtResource( 2 )]
 position = Vector2( 280, 24 )
+
+[node name="Bookcase" parent="Furniture" instance=ExtResource( 3 )]
+position = Vector2( 48, 104 )
 
 [node name="Bookcase2" parent="Furniture" instance=ExtResource( 3 )]
 position = Vector2( 280, 56 )
 
 [node name="Bookcase3" parent="Furniture" instance=ExtResource( 3 )]
 position = Vector2( 80, 8 )
-
-[node name="Bookcase" parent="Furniture" instance=ExtResource( 3 )]
-position = Vector2( 48, 104 )
 
 [node name="Robots" type="Node2D" parent="."]
 
@@ -59,6 +59,6 @@ moveMode = 2
 
 [node name="Robot3" parent="Robots" instance=ExtResource( 4 )]
 material = SubResource( 1 )
-position = Vector2( 65.6911, 37.6931 )
+position = Vector2( 65.3165, 46.3084 )
 move_speed = 96
 moveMode = 4
